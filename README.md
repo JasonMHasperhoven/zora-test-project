@@ -20,3 +20,5 @@ Additionally for styling, I opted for tailwind since I noticed that mint.fun use
 The search input is debouncing and I'm aware that there’s quite a bit of prop drilling. On that point, I could’ve used useContext or plain old redux, but this implementation is still simple imo.
 
 Furthermore it’s fully responsive and changes colors when you select them.
+
+The only thing that’s lacking is tests, but then I would’ve exceeded the time.
