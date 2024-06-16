@@ -15,6 +15,10 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    { pattern: /bg-./ },
+    { pattern: /border-./ },
+  ],
   plugins: [],
 };
 export default config;
