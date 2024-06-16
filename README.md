@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
+yarn # or yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Lib Choices & Notes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+I’ve chosen NextJS as I believe it’s a better choice for production apps compared to create react app.
 
-## Learn More
+I choose to use @tanstack/react-query since I wanted something quick, even though it was my first time using the library.
 
-To learn more about Next.js, take a look at the following resources:
+I ran into a complication with @tanstack/react-query and NextJS, which I solved by adding the <Provider /> component (from google ngl) and the "use client" at the top of page.tsx. I have also experience with redux saga, redux toolkit, rematch & apollo client (which is similar with its hooks).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Additionally for styling, I opted for tailwind since I noticed that mint.fun uses it as well =). I'm familiar with BEM, css modules, styled components as well.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The search input is debouncing and I'm aware that there’s quite a bit of prop drilling. On that point, I could’ve used useContext or plain old redux, but this implementation is still simple imo.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Furthermore it’s fully responsive and changes colors when you select them.
