@@ -17,6 +17,7 @@ const config: Config = {
   },
   safelist: [
     { pattern: /bg-./ },
+    { pattern: /text-./ },
     { pattern: /border-./ },
   ],
   plugins: [],

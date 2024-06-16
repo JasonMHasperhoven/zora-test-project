@@ -1,6 +1,6 @@
 import Image from "./Image";
 import { Photo } from "@/types/unsplash";
-import arrayFill from '@/services/arrayFill'
+import arrayFill from "@/services/arrayFill";
 
 export default function Results({
   results,
@@ -10,7 +10,7 @@ export default function Results({
   isLoading: Boolean;
 }>) {
   return (
-    <div className="grid grid-cols-3 gap-4 mb-6">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
       {!isLoading && results
         ? results.map((result) => (
             <Image

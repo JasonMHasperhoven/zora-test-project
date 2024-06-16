@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import debounce from "lodash/debounce";
-import SearchIcon from '../icons/Search';
+import SearchIcon from "../icons/Search";
 
-export default function SearchInput({ query, setQuery }: Readonly<{
+export default function SearchInput({
+  query,
+  setQuery,
+}: Readonly<{
   query: string;
   setQuery: Function;
 }>) {
@@ -11,7 +14,7 @@ export default function SearchInput({ query, setQuery }: Readonly<{
   const debouncedSetQuery = useCallback(debounce(setQuery, 500), [setQuery]);
 
   useEffect(() => {
-    debouncedSetQuery(localSearch)
+    debouncedSetQuery(localSearch);
   }, [localSearch, debouncedSetQuery]);
 
   return (
@@ -20,7 +23,7 @@ export default function SearchInput({ query, setQuery }: Readonly<{
       <input
         className="w-full bg-white rounded-full py-4 pl-12 pr-8 drop-shadow-lg"
         value={localSearch}
-        onChange={event => {
+        onChange={(event) => {
           setLocalSearch(event.target.value);
         }}
       />

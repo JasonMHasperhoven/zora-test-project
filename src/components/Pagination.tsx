@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { ColorId } from "unsplash-js";
 import ReactPaginate from "react-paginate";
+import useSize from "@/hooks/useSize";
 
 const itemClassName = "mx-1";
 const anchorClassName =
   "w-10 h-10 flex drop-shadow-md justify-center items-center rounded-full bg-white text-sm font-medium";
+const mobileAnchorClassName =
+  "w-8 h-8 flex drop-shadow-md justify-center items-center rounded-full bg-white text-sm font-medium";
 
 export default function Pagination({
   page,
@@ -16,6 +19,14 @@ export default function Pagination({
   totalPages: number;
   color: ColorId;
 }>) {
+  const [windowWidth] = useSize();
+  const mediaAnchorClassName =
+    windowWidth > 768 ? anchorClassName : mobileAnchorClassName;
+
+  if (!page || !totalPages) {
+    return null;
+  }
+
   return (
     <ReactPaginate
       breakLabel="..."
@@ -25,16 +36,15 @@ export default function Pagination({
       onClick={({ nextSelectedPage }) => {
         setPage(nextSelectedPage);
       }}
-      containerClassName="flex w-full justify-center"
+      containerClassName="flex w-full justify-center mb-8"
       pageClassName={itemClassName}
       nextClassName={itemClassName}
       previousClassName={itemClassName}
       breakClassName={itemClassName}
-      breakLinkClassName={anchorClassName}
-      nextLinkClassName={anchorClassName}
-      previousLinkClassName={anchorClassName}
-      pageLinkClassName={anchorClassName}
-      pageRangeDisplayed={3}
+      breakLinkClassName={mediaAnchorClassName}
+      nextLinkClassName={mediaAnchorClassName}
+      previousLinkClassName={mediaAnchorClassName}
+      pageLinkClassName={mediaAnchorClassName}
       pageCount={totalPages}
       renderOnZeroPageCount={null}
     />

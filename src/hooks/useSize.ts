@@ -1,17 +1,17 @@
 /* eslint-disable consistent-return */
-import { useEffect, useState } from 'react';
-import get from 'lodash/get';
+import { useEffect, useState } from "react";
+import get from "lodash/get";
 
 type Size = {
-  width: number
-  height: number
-}
+  width: number;
+  height: number;
+};
 
 // can be controlled using dep array or else use resize observer
 export default function useSize(
-  ref,
+  ref?: any,
   dependencyArray = [],
-  fallback = typeof window !== 'undefined' && document.body,
+  fallback = typeof window !== "undefined" && document.body
 ) {
   const [size, setSize] = useState(<Size>{});
 
@@ -27,12 +27,12 @@ export default function useSize(
       });
 
       if (!dependencyArray.length) {
-        observer = new ResizeObserver(entries => {
+        observer = new ResizeObserver((entries) => {
           // Wrap it in requestAnimationFrame to avoid this error - ResizeObserver loop limit exceeded
           requestAnimationFrame(() => {
             setSize({
-              width: get(entries, '0.target.clientWidth', 0),
-              height: get(entries, '0.target.clientHeight', 0),
+              width: get(entries, "0.target.clientWidth", 0),
+              height: get(entries, "0.target.clientHeight", 0),
             });
           });
         });
@@ -47,7 +47,7 @@ export default function useSize(
         observer = null;
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, fallback, ...dependencyArray]);
 
   return [size.width, size.height];

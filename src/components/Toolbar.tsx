@@ -12,8 +12,8 @@ export default function Toolbar({
   setOrderBy: Function;
 }>) {
   return (
-    <div className="flex justify-between w-full bg-white rounded-lg drop-shadow-md px-8 py-4 mb-6">
-      <div className="flex items-center">
+    <div className="flex flex-wrap justify-between w-full bg-white rounded-lg drop-shadow-md px-6 lg:px-8 pt-4 mb-6">
+      <div className="flex items-center mb-4">
         <div className="mr-4">Filter by color:</div>
         {Object.values(Colors).map((clr) => (
           <button
@@ -26,7 +26,7 @@ export default function Toolbar({
           />
         ))}
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mb-4">
         <div className="mr-4">Sort by:</div>
         {Object.entries(OrderTypes).map(([text, value]) => (
           <button

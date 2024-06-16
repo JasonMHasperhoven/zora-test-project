@@ -36,26 +36,30 @@ export default function Home() {
   const { results, totalPages } = data;
 
   return (
-    <main className={`flex w-full h-full justify-center p-16 bg-${color}-100`}>
-      <div className="w-full max-w-screen-lg">
-        <SearchInput query={query} setQuery={setQuery} />
-        <Toolbar
-          color={color}
-          setColor={setColor}
-          orderBy={orderBy}
-          setOrderBy={setOrderBy}
-        />
-        {error ? (
-          <div>An error has occurred: {error.message}</div>
-        ) : (
-          <Results isLoading={isLoading} results={results} />
-        )}
-        <Pagination
-          page={page}
-          setPage={setPage}
-          totalPages={totalPages}
-          color={color}
-        />
+    <main className="flex flex-col w-full h-full">
+      <div
+        className={`flex grow w-full justify-center p-8 sm:p-10 md:p-12 lg:p-16 bg-${color}-100`}
+      >
+        <div className="w-full grow max-w-screen-lg">
+          <SearchInput query={query} setQuery={setQuery} />
+          <Toolbar
+            color={color}
+            setColor={setColor}
+            orderBy={orderBy}
+            setOrderBy={setOrderBy}
+          />
+          {error ? (
+            <div>An error has occurred: {error.message}</div>
+          ) : (
+            <Results isLoading={isLoading} results={results} />
+          )}
+          <Pagination
+            page={page}
+            setPage={setPage}
+            totalPages={totalPages}
+            color={color}
+          />
+        </div>
       </div>
     </main>
   );

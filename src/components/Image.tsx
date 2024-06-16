@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { RefObject, useRef, useState } from "react";
 import NextImage from "next/image";
 import useSize from "@/hooks/useSize";
 
@@ -12,7 +12,7 @@ export default function Image({
   const [isLoading, setIsLoading] = useState(true);
   const ref = useRef();
   const [width] = useSize(ref);
-  const height = width ? (width / 3) * 2 : 0;
+  const height = width ? Math.round((width / 3) * 2) : 0;
 
   const wrapperClassName = [
     "bg-white",
@@ -23,13 +23,13 @@ export default function Image({
     .join(" ");
 
   return (
-    <div ref={ref} className={wrapperClassName} style={{ height }}>
+    <div ref={ref as any} className={wrapperClassName} style={{ height }}>
       {src && width && (
         <NextImage
           width={width}
           height={height}
           src={src}
-          alt={alt}
+          alt={alt as string}
           style={{ width, height }}
           className="rounded-lg object-cover object-center"
           onLoad={() => setIsLoading(false)}
